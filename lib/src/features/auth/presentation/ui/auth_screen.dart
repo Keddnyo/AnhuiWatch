@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants.dart';
 import '../../domain/interactor/auth_interactor.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class AuthScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                'AnhuiWatch',
+                appName,
                 style: TextStyle(
                   fontSize: 48.0,
                   fontWeight: FontWeight.bold,

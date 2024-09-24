@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants.dart';
 import '../../../auth/domain/interactor/auth_interactor.dart';
 import '../../data/repository/wearable_repository_impl.dart';
 import '../../domain/use_cases/get_wearables_use_case.dart';
@@ -11,7 +12,7 @@ class WearableCatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('AnhuiWatch'),
+          title: const Text(appName),
         ),
         body: StreamBuilder(
           stream: GetWearablesUseCase(
@@ -28,9 +29,11 @@ class WearableCatalogScreen extends StatelessWidget {
               return const Center(
                 child: Padding(
                   padding: EdgeInsets.all(12.0),
-                  child: Text(
-                    'No wearables',
-                    textAlign: TextAlign.center,
+                  child: Center(
+                    child: Text(
+                      'No wearables',
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               );
@@ -64,7 +67,7 @@ class WearableCatalogScreen extends StatelessWidget {
               const DrawerHeader(
                 child: Center(
                   child: Text(
-                    'AnhuiWatch',
+                    appName,
                     style: TextStyle(
                       fontSize: 36.0,
                       fontWeight: FontWeight.bold,
@@ -83,6 +86,7 @@ class WearableCatalogScreen extends StatelessWidget {
               const Divider(),
               const AboutListTile(
                 icon: Icon(Icons.info_outline),
+                applicationLegalese: applicationLegalese,
               ),
             ],
           ),

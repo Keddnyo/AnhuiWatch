@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/utilities/open_url.dart';
 import '../../../wearables/domain/model/wearable.dart';
 import '../../data/repository/watch_face_repository.dart';
 import '../../domain/use_cases/get_watch_faces_use_case.dart';
@@ -29,13 +30,16 @@ class WatchFaceCatalogScreen extends StatelessWidget {
             }
 
             final watchFaces = snapshot.data!;
+            final watchFaceCount = watchFaces.length;
 
             if (watchFaces.isEmpty) {
               return const Padding(
                 padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'No watch faces',
-                  textAlign: TextAlign.center,
+                child: Center(
+                  child: Text(
+                    'No watch faces',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               );
             }
@@ -49,24 +53,32 @@ class WatchFaceCatalogScreen extends StatelessWidget {
 
                 return Card(
                   elevation: 4.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Image.network(
-                      watchFace.imageUrl,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress != null) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
+                  child: InkWell(
+                    onTap: () => openUrl(
+                      watchFace.fileUrl,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      12.0,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Image.network(
+                        watchFace.imageUrl,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress != null) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
 
-                        return child;
-                      },
+                          return child;
+                        },
+                      ),
                     ),
                   ),
                 );
               },
-              itemCount: watchFaces.length,
+              itemCount: watchFaceCount,
             );
           },
         ),
