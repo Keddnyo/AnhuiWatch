@@ -43,20 +43,6 @@ class WearableCatalogScreen extends StatelessWidget {
               );
             }
 
-            if (snapshot.data!.isEmpty) {
-              return const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Center(
-                    child: Text(
-                      'No wearables',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              );
-            }
-
             final wearables = snapshot.data!;
             final wearableCount = wearables.length;
 

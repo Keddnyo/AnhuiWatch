@@ -32,18 +32,6 @@ class WatchFaceCatalogScreen extends StatelessWidget {
             final watchFaces = snapshot.data!;
             final watchFaceCount = watchFaces.length;
 
-            if (watchFaces.isEmpty) {
-              return const Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Center(
-                  child: Text(
-                    'No watch faces',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              );
-            }
-
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 256,
