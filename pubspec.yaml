@@ -9,10 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^5.4.2
   http: ^1.2.2
-  firebase_core: ^3.5.0
   url_launcher: ^6.3.0
+  firedart: ^0.9.8
 
 dev_dependencies:
   flutter_test:

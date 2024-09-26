@@ -46,7 +46,7 @@ class WatchFaceCatalogScreen extends StatelessWidget {
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 384,
+                maxCrossAxisExtent: 256,
               ),
               itemBuilder: (context, index) {
                 final watchFace = watchFaces[index];

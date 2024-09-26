@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firedart/firedart.dart';
 
 import '../entity/wearable_entity.dart';
 
 class WearableMapper {
-  static WearableEntity toWearableEntity(
-    DocumentSnapshot<Map<String, dynamic>> documentSnapshot,
-  ) =>
-      WearableEntity(
-        id: documentSnapshot.id,
-        deviceName: documentSnapshot.data()?['deviceName'],
-        deviceCode: documentSnapshot.id,
+  static WearableEntity toWearableEntity(Document document) => WearableEntity(
+        id: document.id,
+        deviceName: document['deviceName'],
+        deviceCode: document.id,
       );
 }
