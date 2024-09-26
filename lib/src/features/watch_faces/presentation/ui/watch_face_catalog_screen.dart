@@ -4,23 +4,23 @@ import '../../../../core/utilities/open_url.dart';
 import '../../../wearables/domain/model/wearable.dart';
 import '../../data/repository/watch_face_repository.dart';
 import '../../domain/use_cases/get_watch_faces_use_case.dart';
+import 'widgets/watch_face_card.dart';
 
 class WatchFaceCatalogScreen extends StatelessWidget {
-  const WatchFaceCatalogScreen({super.key, required Wearable wearable})
-      : _wearable = wearable;
+  const WatchFaceCatalogScreen({super.key, required this.wearable});
 
-  final Wearable _wearable;
+  final Wearable wearable;
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(_wearable.deviceName),
+          title: Text(wearable.deviceName ?? wearable.deviceCode),
         ),
         body: StreamBuilder(
           stream: GetWatchFacesUseCase(
             repository: WatchFaceRepositoryImpl(),
           )(
-            _wearable.deviceCode,
+            wearable.deviceCode,
           ),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
@@ -51,31 +51,9 @@ class WatchFaceCatalogScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final watchFace = watchFaces[index];
 
-                return Card(
-                  elevation: 4.0,
-                  child: InkWell(
-                    onTap: () => openUrl(
-                      watchFace.fileUrl,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      12.0,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Image.network(
-                        watchFace.imageUrl,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress != null) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-
-                          return child;
-                        },
-                      ),
-                    ),
-                  ),
+                return WatchFaceCard(
+                  watchFace: watchFace,
+                  onTap: () => openUrl(watchFace.fileUrl),
                 );
               },
               itemCount: watchFaceCount,

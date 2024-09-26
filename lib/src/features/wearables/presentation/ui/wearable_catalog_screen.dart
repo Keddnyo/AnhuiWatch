@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
-import '../../../auth/domain/interactor/auth_interactor.dart';
 import '../../data/repository/wearable_repository_impl.dart';
 import '../../domain/use_cases/get_wearables_use_case.dart';
 import 'widgets/wearable_card.dart';
@@ -9,10 +8,29 @@ import 'widgets/wearable_card.dart';
 class WearableCatalogScreen extends StatelessWidget {
   const WearableCatalogScreen({super.key});
 
+  void showAboutDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) => AboutDialog(
+          applicationVersion: '1.0.0',
+          applicationIcon: Image.asset(
+            'assets/icon.png',
+            width: 72.0,
+            height: 72.0,
+          ),
+          applicationLegalese: applicationLegalese,
+        ),
+      );
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(appName),
+          actions: [
+            IconButton(
+              onPressed: () => showAboutDialog(context),
+              icon: const Icon(Icons.info_outline),
+            ),
+          ],
         ),
         body: StreamBuilder(
           stream: GetWearablesUseCase(
@@ -42,7 +60,7 @@ class WearableCatalogScreen extends StatelessWidget {
             final wearables = snapshot.data!;
             final wearableCount = wearables.length;
 
-            return ListView.separated(
+            return ListView.builder(
               itemBuilder: (context, index) {
                 final wearable = wearables[index];
 
@@ -55,41 +73,9 @@ class WearableCatalogScreen extends StatelessWidget {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => const Divider(),
               itemCount: wearableCount,
             );
           },
-        ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                child: Center(
-                  child: Text(
-                    appName,
-                    style: TextStyle(
-                      fontSize: 36.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(AuthInteractor.instance.username!),
-                subtitle: Text(AuthInteractor.instance.userEmail!),
-                trailing: IconButton(
-                  onPressed: AuthInteractor.instance.signOut,
-                  icon: const Icon(Icons.logout),
-                ),
-              ),
-              const Divider(),
-              const AboutListTile(
-                icon: Icon(Icons.info_outline),
-                applicationLegalese: applicationLegalese,
-              ),
-            ],
-          ),
         ),
       );
 }

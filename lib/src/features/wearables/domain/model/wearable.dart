@@ -1,5 +1,6 @@
 class Wearable {
-  const Wearable({required this.deviceName, required this.deviceCode});
+  const Wearable({required this.deviceCode, required this.deviceName});
 
-  final String deviceName, deviceCode;
+  final String deviceCode;
+  final String? deviceName;
 }

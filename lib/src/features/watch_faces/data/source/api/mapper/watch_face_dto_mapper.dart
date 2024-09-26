@@ -28,7 +28,10 @@ class WatchFaceDtoMapper {
         fileSizeV2: json['file_size_v2'],
       );
 
-  static WatchFaceEntity toWatchFaceEntity(WatchFaceDto dto) => WatchFaceEntity(
+  static WatchFaceEntity toWatchFaceEntity(
+    WatchFaceDto dto,
+  ) =>
+      WatchFaceEntity(
         title: dto.displayName!,
         imageUrl: dto.icon!,
         fileUrl: dto.configFile!,

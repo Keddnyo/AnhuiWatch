@@ -8,7 +8,7 @@ class WearableMapper {
   ) =>
       WearableEntity(
         id: documentSnapshot.id,
-        deviceName: documentSnapshot['deviceName'],
+        deviceName: documentSnapshot.data()?['deviceName'],
         deviceCode: documentSnapshot.id,
       );
 }

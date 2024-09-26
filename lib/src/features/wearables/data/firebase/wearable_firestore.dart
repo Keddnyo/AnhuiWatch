@@ -7,7 +7,6 @@ class WearableFirestore {
   static Stream<List<WearableEntity>> get wearables => FirebaseFirestore
       .instance
       .collection('/wearables')
-      .orderBy('deviceName')
       .snapshots()
       .map((query) => query.docs.map(WearableMapper.toWearableEntity).toList());
 }
