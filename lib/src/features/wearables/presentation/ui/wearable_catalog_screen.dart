@@ -50,12 +50,15 @@ class WearableCatalogScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final wearable = wearables[index];
 
-                return WearableCard(
-                  wearable: wearable,
-                  onTap: () => Navigator.pushNamed(
-                    context,
-                    '/watch_faces',
-                    arguments: wearable,
+                return Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: WearableCard(
+                    wearable: wearable,
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/watch_faces',
+                      arguments: wearable,
+                    ),
                   ),
                 );
               },

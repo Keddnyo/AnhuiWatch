@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData get theme => ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: Colors.deepOrange,
-      ),
-    );
+ThemeData get theme => ThemeData();
 
 ThemeData get darkTheme => ThemeData(
       colorScheme: ColorScheme.fromSeed(
