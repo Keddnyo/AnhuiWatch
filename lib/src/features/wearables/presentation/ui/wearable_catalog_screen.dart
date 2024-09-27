@@ -51,7 +51,7 @@ class WearableCatalogScreen extends StatelessWidget {
                 final wearable = wearables[index];
 
                 return Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(4.0),
                   child: WearableCard(
                     wearable: wearable,
                     onTap: () => Navigator.pushNamed(

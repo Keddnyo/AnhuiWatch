@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "io.github.keddnyo" "\0"
-            VALUE "FileDescription", "anhuiwatch" "\0"
+            VALUE "FileDescription", "Huami wearable watch faces" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "anhuiwatch" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 io.github.keddnyo. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (c) 2024 Timur Zhdikhanov. All rights reserved." "\0"
             VALUE "OriginalFilename", "anhuiwatch.exe" "\0"
-            VALUE "ProductName", "anhuiwatch" "\0"
+            VALUE "ProductName", "AnhuiWatch" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

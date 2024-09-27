@@ -11,7 +11,7 @@ class ClickableCard extends StatelessWidget {
     final borderRadius = BorderRadius.circular(12.0);
 
     return Card(
-      elevation: 2.0,
+      elevation: 4.0,
       shape: RoundedRectangleBorder(
         borderRadius: borderRadius,
         side: BorderSide(
