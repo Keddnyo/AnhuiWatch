@@ -2,6 +2,8 @@
 
 Huami wearable watch faces
 
+<a href="https://github.com/Keddnyo/AnhuiEatch/releases"><img src="https://img.shields.io/github/downloads/keddnyo/anhuiwatch/total?style=for-the-badge"></a>
+
 ## Features
 1. Wearable device list curated by the app developer on Firestore
 2. Watch face list for a chosen wearable device fetched from Huami server and cached in Firestore
